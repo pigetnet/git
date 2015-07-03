@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ $# -eq 2 ]
+then
+username=$1
+repo=$2
+description "Pushing current directory into a github repository $1/$2"
+git init
+git add .
+git commit -m "First autocommit by pigetBot"
+git remote add origin https://github.com/$username/$repo.git
+git push -u origin master
+else
+errorBox "Wrong Arguments"
+usage "gitInit myusername repo"
+example "gitInit pigetnet core"
+fi

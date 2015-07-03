@@ -1,0 +1,8 @@
+#!/bin/bash
+description "Git Push All"
+listecho "git add -A"
+listecho "git commit"
+listecho "git push"
+git add -A
+git commit
+git push
