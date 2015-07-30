@@ -1,4 +1,0 @@
-#!/bin/bash
-description "Your git configuration"
-git config -l
-

@@ -1,0 +1,8 @@
+#!/bin/bash
+/show/description "Push everything to repo"
+/show/listecho "git add -A" $OK
+/show/listecho "git commit" $OK
+/show/listecho "git push" $OK
+git add -A
+git commit
+git push

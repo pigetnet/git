@@ -1,0 +1,17 @@
+#!/bin/bash
+/show/description "GIT CLIENT CONFIGURATION"
+/system/install git
+
+echo "What is your nickname (not your email)?"
+read name
+echo ""
+echo "What is your github email?"
+read email
+git config --global user.name "$name"
+git config --global user.email "$email"
+
+/show/listecho "Password is now cached for 15 minutes" $OK
+git config --global credential.helper "cache --timeout=3600"
+/show/listecho "http://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-pass" $WARN
+
+/do/git/settings

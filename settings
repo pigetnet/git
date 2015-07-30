@@ -1,0 +1,4 @@
+#!/bin/bash
+/show/colecho "~~~~~~~~~~~~~ Git configuration ~~~~~~~~~~~" $PICOLOR
+git config -l
+/show/colecho "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" $PICOLOR
