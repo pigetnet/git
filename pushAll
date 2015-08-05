@@ -5,5 +5,6 @@
 /show/listecho "git push" $OK
 git add -A
 git commit
-echo $?
+if [ $? -eq 0 ];then
 git push
+fi
