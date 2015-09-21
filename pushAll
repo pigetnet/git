@@ -4,7 +4,8 @@
 /show/listecho "git commit" $OK
 /show/listecho "git push" $OK
 git add -A
+read
 git commit
 if [ $? -eq 0 ];then
-git push
+	git push
 fi
