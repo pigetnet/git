@@ -9,6 +9,8 @@ echo "What is your github email?"
 read email
 git config --global user.name "$name"
 git config --global user.email "$email"
+git config --global push.default simple
+
 
 /show/listecho "Password is now cached for 15 minutes" $OK
 git config --global credential.helper "cache --timeout=3600"
