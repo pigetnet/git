@@ -3,7 +3,7 @@
 if [ $# -eq 1 ];then
 	git checkout -b $1
 	git add -A
-	git commit
+	git commit -m "First autocommit by piget"
 	if [ $? -eq 0 ];then
 		git push --set-upstream origin $1
 	fi

@@ -1,19 +1,27 @@
 #!/bin/bash
-/show/description "GIT CLIENT CONFIGURATION"
-/system/install git
 
-echo "What is your nickname (not your email)?"
-read name
-echo ""
-echo "What is your github email?"
-read email
-git config --global user.name "$name"
-git config --global user.email "$email"
-git config --global push.default simple
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox '$0'
+	/show/info '[alpha] [interactive]'
+	/show/usageDescription 'Configure git client (name/email)'
+	/show/usage '$0'
+else
+	/show/description "Git Client Setup"
+	/system/install git
 
+	#Ask for info
+	. /show/askUser "Github nickname (not your email)"
+	name=$ASKUSER
+	. /show/askUser "Github email"
+	email=$ASKUSER
 
-/show/listecho "Password is now cached for 15 minutes" $OK
-git config --global credential.helper "cache --timeout=3600"
-/show/listecho "http://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-pass" $WARN
+	# Modification git global configuration
+	git config --global user.name "$name"
+	git config --global user.email "$email"
+	git config --global push.default simple
+	git config --global credential.helper "cache --timeout=3600"
 
-/do/git/settings
+	/show/listecho "Password is now cached for 15 minutes" $OK
+	/show/listecho "http://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-pass" $WARN
+
+fi

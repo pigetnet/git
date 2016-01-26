@@ -1,4 +1,12 @@
 #!/bin/bash
-/show/colecho "~~~~~~~~~~~~~ Git configuration ~~~~~~~~~~~" $PICOLOR
-git config -l
-/show/colecho "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" $PICOLOR
+
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox '$0'
+	/show/info '[alpha]'
+	/show/usageDescription 'Display git configuration (git config -l)'
+	/show/usage '$0'
+else
+	/show/colecho "~~~~~~~~~~~~~ Git configuration ~~~~~~~~~~~" $PICOLOR
+	git config -l
+	/show/colecho "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" $PICOLOR
+fi
