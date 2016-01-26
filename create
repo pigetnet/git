@@ -9,6 +9,8 @@ git add .
 git commit -m "First autocommit by pigetBot"
 git remote add origin https://github.com/$username/$repo.git
 git push -u origin master
+/do/git/createBranch alpha
+/do/git/createBranch beta
 else
 /show/errorBox "Wrong Arguments"
 /show/usage "gitInit myusername repo"
