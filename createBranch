@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ $# -eq 1 ];then
 	git checkout -b $1
 	git add -A
