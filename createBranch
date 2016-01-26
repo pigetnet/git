@@ -5,7 +5,7 @@ if [ $# -eq 1 ];then
 	git add -A
 	git commit
 	if [ $? -eq 0 ];then
-		git push --set-upstream origin alpha
+		git push --set-upstream origin $1
 	fi
 else
 	echo "Specify branch : /do/git/createBranch alpha"
