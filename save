@@ -1,13 +1,38 @@
 #!/bin/bash
 
-/show/description "Push everything to repo"
-/show/listecho "git add -A" $OK
-/show/listecho "git commit" $OK
-/show/listecho "git push" $OK
-git add -A
-git commit
-if [ $? -eq 0 ];then
-	git push
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info "[beta] [interactive]"
+	/show/usageDescription "Add all, commit and push current directory to Github"
+	/show/usage "$0"
+else
+	if [[ -e ".git/config" ]];then
+		repoName=$(/do/git/name)
+		/show/description "LOCAL:$repoName ----> GITHUB:$repoName"
+
+		/system/logInit "$0 $repoName"
+
+		git add -A >> /tmp/piget.log 2>&1
+
+		git commit 
+		commitErr=$?
+		
+		if [ $commitErr -eq 0 ];then
+			git push >> /tmp/piget.log 2>&1
+			pushErr=$?
+			if [ $pushErr -eq 0 ];then
+				/show/listecho "Repo saved" $OK
+			else
+				/show/listecho "Repo not saved" $ERR
+				/show/listecho "You can force this (this will erase any change on Github) by typing: /do/git/forcesave"
+				tail /tmp/piget.log
+			fi
+		else
+			/show/listecho "Nothing to save" $WARN
+		fi
+	else
+		/show/listecho "This is not a git repo" $ERR
+	fi
 fi
 
 

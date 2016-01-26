@@ -5,4 +5,4 @@
 . /show/continuePrompt
 /show/listecho "git reset --hard HEAD~1"
 git reset --hard HEAD~1
-/do/git/pushAll
+/do/git/save

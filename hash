@@ -1,1 +1,13 @@
-git log --pretty=format:'%h' -n 1
+#!/bin/bash
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info '[beta] [return]'
+	/show/usageDescription 'Show git hash of current folder'
+	/show/return 'hash'
+else
+	if [[ -e ".git/config" ]];then
+		git log --pretty=format:'%h' -n 1
+	else
+		echo "Not a repo"
+	fi
+fi

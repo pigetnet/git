@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info '[beta]'
+	/show/usageDescription 'Update current folder'
+	/show/usage "$0"
+else
+	if [[ -e ".git/config" ]];then
+		repoName=$(/do/git/name)
+		/show/description "GITHUB:$repoName ----> LOCAL:$repoName"
+
+		pullMessage=$(git pull)
+		pullErr=$?
+		if [[ $pullMessage == "Already up-to-date." ]];then
+			/show/listecho "$repoName is already up-to-date" $WARN
+		else
+			if [[ $pullErr -eq 0 ]];then
+				/show/listecho "$repoName has been updated" $OK
+			else
+				/show/listecho "$repoName was not updated" $ERR
+			fi
+		fi
+	else
+		/show/listecho "Not a git repo" $ERR
+	fi
+fi
