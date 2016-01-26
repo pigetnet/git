@@ -1,16 +1,13 @@
 #!/bin/bash
-if [ $# -eq 2 ]
+if [ $# -eq 1 ]
 then
-username=$1
-repo=$2
-/show/description "Pushing current directory into a github repository $1/$2"
+repo=$1
+/show/description "Pushing current directory into $1"
 git init
 git add .
 git commit -m "First autocommit by pigetBot"
-git remote add origin https://github.com/$username/$repo.git
-git push -u origin master
-/do/git/createBranch alpha
-/do/git/createBranch beta
+git remote add origin https://github.com/$repo.git
+git push -u origin alpha
 else
 /show/errorBox "Wrong Arguments"
 /show/usage "gitInit myusername repo"
