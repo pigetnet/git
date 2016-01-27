@@ -1,0 +1,23 @@
+#!/bin/bash
+
+/show/description "Generate readme for current directory"
+currentDir=$(/show/dir)
+
+if [ -f "readme.md" ];then
+  /show/listecho "Erase previous readme.md" $WARN
+  rm readme.md
+fi
+
+for scripts in *
+do
+    if test -f "$scripts"
+    then
+	if [[ $scripts != "readme.md" ]];then
+		/show/listecho "Scanning $currentDir/$scripts"
+	        /show/help "$currentDir/$scripts" >> readme.md
+		echo "" >> readme.md
+    	fi
+    fi
+done
+
+/show/listecho "readme.md finished" $OK
