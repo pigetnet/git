@@ -14,9 +14,10 @@
 | Description           | Force Update current folder (this will erase all local changes!) |
 | Info                  | [beta] [danger]                                                  |
 
-| /do/git/generateReadMe   |                        |
-|:-------------------------|:-----------------------|
-| Info                     | [alpha] [undocumented] |
+| /do/git/generateReadMe   |                                                                 |
+|:-------------------------|:----------------------------------------------------------------|
+| Description              | Analyse scripts on current directory and generate a readme file |
+| Info                     | [beta]                                                          |
 
 | /do/git/hash   |                                 |
 |:---------------|:--------------------------------|

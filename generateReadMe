@@ -1,23 +1,31 @@
 #!/bin/bash
 
-/show/description "Generate readme for current directory"
-currentDir=$(/show/dir)
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+  /show/messagebox "$0"
+  /show/info '[beta]'
+  /show/usageDescription 'Analyse scripts on current directory and generate a readme file'
+  /show/usage "$0"
+else
+  /show/description "Generate readme for current directory"
+  currentDir=$(/show/dir)
 
-if [ -f "readme.md" ];then
-  /show/listecho "Erase previous readme.md" $WARN
-  rm readme.md
-fi
+  if [ -f "readme.md" ];then
+    /show/listecho "Erase previous readme.md" $WARN
+    rm readme.md
+  fi
 
-for scripts in *
-do
-    if test -f "$scripts"
-    then
-	if [[ $scripts != "readme.md" ]];then
-		/show/listecho "Scanning $currentDir/$scripts"
+  for scripts in *
+  do
+      if test -f "$scripts"
+      then
+	      if [[ $scripts != "readme.md" ]];then
+		      /show/listecho "Scanning $currentDir/$scripts"
 	        /show/help "$currentDir/$scripts" >> readme.md
-		echo "" >> readme.md
-    	fi
-    fi
-done
+		      echo "" >> readme.md
+    	  fi
+      fi
+  done
+
+fi
 
 /show/listecho "readme.md finished" $OK
