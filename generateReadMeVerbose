@@ -3,7 +3,7 @@
 if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
   /show/messagebox "$0"
   /show/info '[alpha] [wip]'
-  /show/usageDescription 'Analyse scripts on current directory and generate a readme file'
+  /show/usageDescription 'Analyse scripts on current directory and generate a verbose readme file'
   /show/usage "$0"
 else
   /show/description "Generate readme for current directory"
@@ -11,7 +11,7 @@ else
 
   if [ -f "readme.md" ];then
     /show/listecho "Erase previous readme.md" $WARN
-    rm readme.md
+    rm doc.md
   fi
 
   for scripts in *
@@ -20,12 +20,12 @@ else
       then
 	      if [[ $scripts != "readme.md" ]] || [[ $scripts != "doc.md" ]];then
 		      /show/listecho "Scanning $currentDir/$scripts"
-	        /show/help "$currentDir/$scripts" >> readme.md
-		      echo "" >> readme.md
+	        /show/helpVerbose "$currentDir/$scripts" >> doc.md
+		      echo "" >> doc.md
     	  fi
       fi
   done
 
 fi
 
-/show/listecho "readme.md finished" $OK
+/show/listecho "doc.md finished" $OK
