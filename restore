@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ $# -ge 1 ] || [[ $1 == "--help" ]] || [ $(id -u) -ne 0 ];then
+	/show/messagebox "$0"
+	/show/info "[beta] [interactive] [danger]"
+	/show/usageDescription "Restore git repo to last remote state"
+	/show/usage "$0"
+else
+	if [[ -e ".git/config" ]];then
+		repoName=$(/do/git/name)
+		/show/description "GITHUB:$repoName [RESTORE] ----> GITHUB:$repoName"
+
+		/system/logInit "$0 $repoName"
+
+		git reset --hard HEAD
+		commitErr=$?
+		if [ $commitErr -eq 0 ];then
+			/show/listecho "Repo restored" $OK
+		else
+			/show/listecho "Repo not restored" $ERR
+			tail /tmp/piget.log
+		fi
+	else
+		/show/listecho "This is not a git repo" $ERR
+	fi
+fi
+
+
