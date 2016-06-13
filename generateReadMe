@@ -9,23 +9,27 @@ else
   /show/description "Generate readme for current directory"
   currentDir=$(/show/dir)
 
-  if [ -f "readme.md" ];then
-    /show/listecho "Erase previous readme.md" $WARN
-    rm readme.md
+  if [ -f "./doc/manual.md" ];then
+    /show/listecho "Erase previous manual.md" $WARN
+    rm ./doc/manual.md
   fi
+
+  /system/makedir ./doc
+
+
 
   for scripts in *
   do
       if test -f "$scripts"
       then
 	      if [[ $scripts != "readme.md" ]] || [[ $scripts != "doc.md" ]];then
-		      /show/listecho "Scanning $currentDir/$scripts"
-	        /show/help "$currentDir/$scripts" >> readme.md
-		      echo "" >> readme.md
+		/show/listecho "Scanning $currentDir/$scripts"
+	        /show/help "$currentDir/$scripts" >> ./doc/manual.md
+		echo "" >> ./doc/manual.md
     	  fi
       fi
   done
 
 fi
 
-/show/listecho "readme.md finished" $OK
+/show/listecho "manual.md finished" $OK

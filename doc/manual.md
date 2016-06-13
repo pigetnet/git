@@ -3,6 +3,7 @@
 | Description      | Create a repo on github (you need to create it on github.com before) |
 | Example          | /do/git/create pigetnet/core                                         |
 | Info             | [beta] [interactive]                                                 |
+| Arguments        | 1:repo,                                                              |
 
 | /do/git/forcesave   |                                                         |
 |:--------------------|:--------------------------------------------------------|
@@ -17,7 +18,12 @@
 | /do/git/generateReadMe   |                                                                 |
 |:-------------------------|:----------------------------------------------------------------|
 | Description              | Analyse scripts on current directory and generate a readme file |
-| Info                     | [beta]                                                          |
+| Info                     | [alpha] [wip]                                                   |
+
+| /do/git/generateReadMeVerbose   |                                                                         |
+|:--------------------------------|:------------------------------------------------------------------------|
+| Description                     | Analyse scripts on current directory and generate a verbose readme file |
+| Info                            | [alpha] [wip]                                                           |
 
 | /do/git/hash   |                                 |
 |:---------------|:--------------------------------|
@@ -28,6 +34,11 @@
 |:---------------|:------------------------------------------|
 | Description    | Display current directory Repository name |
 | Info           | [beta] [return]                           |
+
+| /do/git/restore   |                                       |
+|:------------------|:--------------------------------------|
+| Description       | Restore git repo to last remote state |
+| Info              | [beta] [interactive] [danger]         |
 
 | /do/git/save   |                                                      |
 |:---------------|:-----------------------------------------------------|
