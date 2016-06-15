@@ -78,6 +78,10 @@
 | Description    | Display current directory Repository name             |
 | Usage          | Description Display current directory Repository name |
 
+| /do/git/README.MD   |                        |
+|:--------------------|:-----------------------|
+| Info                | [alpha] [undocumented] |
+
 | /do/git/restore                                      |                                         |
 |:-----------------------------------------------------|:----------------------------------------|
 | Info                                                 | [beta] [interactive] [danger]           |
@@ -92,21 +96,21 @@
 | 2. Repo not restored                                 |                                         |
 | 3. This is not a git repo                            |                                         |
 
-| /do/git/save                                                                              |                                                      |
-|:------------------------------------------------------------------------------------------|:-----------------------------------------------------|
-| Info                                                                                      | [beta] [interactive]                                 |
-| Description                                                                               | Add all, commit and push current directory to Github |
-| Usage                                                                                     | /do/git/save                                         |
-| Variables                                                                                 | repoName=$(/do/git/name), commitErr=$?, pushErr=$?,  |
-| Modules                                                                                   | repoName=$(/do/git/name),                            |
-| System                                                                                    | /system/logInit "$0 $repoName",                      |
-| File exists                                                                               | ".git/config"                                        |
-| 1. LOCAL:$repoName ----> GITHUB:$repoName                                                 |                                                      |
-| 1. Repo saved                                                                             |                                                      |
-| 2. Repo not saved                                                                         |                                                      |
-| 3. You can force this (this will erase any change on Github) by typing: /do/git/forcesave |                                                      |
-| 4. Nothing to save                                                                        |                                                      |
-| 5. This is not a git repo                                                                 |                                                      |
+| /do/git/save                                                                              |                                                                                  |
+|:------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------|
+| Info                                                                                      | [beta] [interactive]                                                             |
+| Description                                                                               | Add all, commit and push current directory to Github                             |
+| Usage                                                                                     | /do/git/save                                                                     |
+| Variables                                                                                 | repoName=$(/do/git/name), commitErr=$?, pushErr=$?,                              |
+| Modules                                                                                   | repoName=$(/do/git/name), /do/git/generateReadMe, /do/git/generateReadMeVerbose, |
+| System                                                                                    | /system/logInit "$0 $repoName",                                                  |
+| File exists                                                                               | ".git/config"                                                                    |
+| 1. LOCAL:$repoName ----> GITHUB:$repoName                                                 |                                                                                  |
+| 1. Repo saved                                                                             |                                                                                  |
+| 2. Repo not saved                                                                         |                                                                                  |
+| 3. You can force this (this will erase any change on Github) by typing: /do/git/forcesave |                                                                                  |
+| 4. Nothing to save                                                                        |                                                                                  |
+| 5. This is not a git repo                                                                 |                                                                                  |
 
 | /do/git/settings                                        |                                           |
 |:--------------------------------------------------------|:------------------------------------------|

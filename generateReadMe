@@ -22,7 +22,7 @@ else
   do
       if test -f "$scripts"
       then
-	      if [[ $scripts != "readme.md" ]] || [[ $scripts != "doc.md" ]];then
+	      if [[ $scripts != "README.MD" ]];then
 		/show/listecho "Scanning $currentDir/$scripts"
 	        /show/help "$currentDir/$scripts" >> ./doc/manual.md
 		echo "" >> ./doc/manual.md
