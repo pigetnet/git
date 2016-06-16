@@ -12,9 +12,6 @@ else
 
 		/system/logInit "$0 $repoName"
 
-		/do/git/generateReadMe
-		/do/git/generateReadMeVerbose
-
 		git add -A >> /tmp/piget.log 2>&1
 
 		git commit 

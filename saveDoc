@@ -1,0 +1,4 @@
+#!/bin/bash
+/do/git/generateReadMe
+/do/git/generateReadMeVerbose
+/do/git/save

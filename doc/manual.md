@@ -45,6 +45,10 @@
 | Description    | Add all, commit and push current directory to Github |
 | Info           | [beta] [interactive]                                 |
 
+| /do/git/saveDoc   |                        |
+|:------------------|:-----------------------|
+| Info              | [alpha] [undocumented] |
+
 | /do/git/settings   |                                           |
 |:-------------------|:------------------------------------------|
 | Description        | Display git configuration (git config -l) |
